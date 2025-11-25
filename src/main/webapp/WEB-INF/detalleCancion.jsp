@@ -11,7 +11,7 @@
     <body>
 
         <h1>Detalle de la Canción</h1>
-        <div class="contenedordetalles">
+        <div class="contenedorDetalles">
             <p><strong>ID:</strong> ${cancion.id}</p>
             <p><strong>Título:</strong> ${cancion.titulo}</p>
             <p><strong>Artista:</strong> ${cancion.artista}</p>
@@ -21,7 +21,10 @@
             <p><strong>Creada:</strong> ${cancion.fechaCreacion}</p>
             <p><strong>Actualizada:</strong> ${cancion.fechaActualizacion}</p>
         </div>
-        <a href="/canciones">Volver a lista de canciones</a>
+        <a href="/canciones/formulario/editar/${cancion.id}">
+            <button class="btn1">Editar Canción</button>
+        </a>
+        <a class="volver" href="/canciones">Volver a lista de canciones</a>
 
     </body>
 </html>

@@ -1,18 +1,21 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ page isErrorPage="true"%>
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Agregar Cancion</title>
+    <title>Editar Cancion</title>
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
 
-    <h1>Agregar Cancion:</h1>
+    <h1>Editar Cancion:</h1>
 
-    <form:form action="/canciones/procesa/agregar" method="POST" modelAttribute="cancion">
+    <form:form action="/canciones/procesa/editar/${cancion.id}" method="POST" modelAttribute="cancion">
+    <input type="hidden" name="_method" value="PUT"/>
+
         <form:label path="titulo">Titulo:</form:label>
         <form:input type="text" path="titulo"/>
         <form:errors path="titulo"/>
@@ -33,7 +36,9 @@
         <form:input type="text" path="idioma"/>
         <form:errors path="idioma"/>
 
-        <input class="btn1" type="submit" value="Agregar"/>
+        <input type="hidden" name="id" value="${cancion.id}"/>
+
+        <input class="btn1" type="submit" value="Guardar"/>
 
     </form:form> 
         <a class="volver" href="/canciones">Volver</a>

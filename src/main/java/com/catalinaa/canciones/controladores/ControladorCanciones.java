@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import com.catalinaa.canciones.modelos.Cancion;
 import com.catalinaa.canciones.servicios.ServicioCanciones;
 
-import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 @Controller
@@ -35,7 +35,7 @@ public class ControladorCanciones {
     }
 
     @GetMapping("/canciones/detalle/{idCancion}")
-    public String desplegarDetalleCancion(@PathVariable("idCancion") Long idCancion, Model modelo, HttpSession session) {
+    public String desplegarDetalleCancion(@PathVariable("idCancion") Long idCancion, Model modelo) {
         Cancion cancion = this.servicioCanciones.obtenerPorId(idCancion);
         modelo.addAttribute("cancion", cancion);
         return "detalleCancion.jsp";
@@ -49,11 +49,34 @@ public class ControladorCanciones {
 
     // Creando cancion nueva
     @PostMapping("/canciones/procesa/agregar")
-    public String procesarAgregarCancion(@Valid @ModelAttribute("cancion") Cancion cancion, BindingResult validaciones){
+    public String procesarAgregarCancion(@Valid @ModelAttribute("cancion") Cancion cancion, 
+            BindingResult validaciones) {
+
         if(validaciones.hasErrors()){
             return "agregarCancion.jsp";
         }
         this.servicioCanciones.agregarCancion(cancion);
+        return "redirect:/canciones";
+    }
+
+    // Accediendo a formulario actualizacion
+    @GetMapping("/canciones/formulario/editar/{idCancion}")
+    public String formularioEditarCancion(@PathVariable("idCancion") Long idCancion, Model modelo) {
+        Cancion cancion = servicioCanciones.obtenerPorId(idCancion);
+        modelo.addAttribute("cancion", cancion);
+            return "editarCancion.jsp";
+    }
+
+    // Actualizando cancion
+    @PutMapping("/canciones/procesa/editar/{idCancion}")
+    public String procesarEditarCancion(@PathVariable("idCancion") Long idCancion, @Valid @ModelAttribute("cancion") Cancion cancion,
+            BindingResult validaciones) {
+    
+        if (validaciones.hasErrors()) {
+            return "editarCancion.jsp";
+        }
+        
+        this.servicioCanciones.actualizaCancion(cancion);
         return "redirect:/canciones";
     }
 }

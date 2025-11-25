@@ -33,7 +33,7 @@
         </tbody>
     </table>
     <a href="/canciones/formulario/agregar">
-        <button class="agregarBtn">Agregar Canción</button>
+        <button class="btn1">Agregar Canción</button>
     </a>
 </body>
 </html>
