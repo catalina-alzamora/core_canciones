@@ -11,16 +11,16 @@
     <body>
 
         <h1>Detalle de la Canción</h1>
-
-        <p><strong>ID:</strong> ${cancion.id}</p>
-        <p><strong>Título:</strong> ${cancion.titulo}</p>
-        <p><strong>Artista:</strong> ${cancion.artista}</p>
-        <p><strong>Álbum:</strong> ${cancion.album}</p>
-        <p><strong>Género:</strong> ${cancion.genero}</p>
-        <p><strong>Idioma:</strong> ${cancion.idioma}</p>
-        <p><strong>Creada:</strong> ${cancion.fechaCreacion}</p>
-        <p><strong>Actualizada:</strong> ${cancion.fechaActualizacion}</p>
-
+        <div class="contenedordetalles">
+            <p><strong>ID:</strong> ${cancion.id}</p>
+            <p><strong>Título:</strong> ${cancion.titulo}</p>
+            <p><strong>Artista:</strong> ${cancion.artista}</p>
+            <p><strong>Álbum:</strong> ${cancion.album}</p>
+            <p><strong>Género:</strong> ${cancion.genero}</p>
+            <p><strong>Idioma:</strong> ${cancion.idioma}</p>
+            <p><strong>Creada:</strong> ${cancion.fechaCreacion}</p>
+            <p><strong>Actualizada:</strong> ${cancion.fechaActualizacion}</p>
+        </div>
         <a href="/canciones">Volver a lista de canciones</a>
 
     </body>

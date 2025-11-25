@@ -6,31 +6,34 @@
 <head>
     <meta charset="UTF-8">
     <title>Lista de Canciones</title>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
 
-<h1>Lista de Canciones</h1>
+    <h1>Lista de Canciones</h1>
 
-<table>
-    <thead>
-        <tr>
-            <th>Título</th>
-            <th>Artista</th>
-            <th>Detalles</th>
-        </tr>
-    </thead>
-    <tbody>
-        <c:forEach var="cancion" items="${listaCanciones}">
+    <table>
+        <thead>
             <tr>
-                <td>${cancion.titulo}</td>
-                <td>${cancion.artista}</td>
-                <td>
-                    <a href="/canciones/detalle/${cancion.id}">Detalle</a>
-                </td>
+                <th>Título</th>
+                <th>Artista</th>
+                <th>Detalles</th>
             </tr>
-        </c:forEach>
-    </tbody>
-</table>
-
+        </thead>
+        <tbody>
+            <c:forEach var="cancion" items="${listaCanciones}">
+                <tr>
+                    <td>${cancion.titulo}</td>
+                    <td>${cancion.artista}</td>
+                    <td>
+                        <a class="detalle" href="/canciones/detalle/${cancion.id}">Detalle</a>
+                    </td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
+    <a href="/canciones/formulario/agregar">
+        <button class="agregarBtn">Agregar Canción</button>
+    </a>
 </body>
 </html>

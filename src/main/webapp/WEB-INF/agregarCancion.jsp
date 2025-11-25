@@ -6,6 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Lista de Canciones</title>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
 
@@ -32,10 +33,10 @@
         <form:input type="text" path="idioma"/>
         <form:errors path="idioma"/>
 
-        <input type="submit" value="Agregar"/>
+        <input class="btn" type="submit" value="Agregar"/>
 
     </form:form> 
-        <a href="/canciones">Volver</a>
+        <a class="volverForm" href="/canciones">Volver</a>
 
 </body>
 </html>
