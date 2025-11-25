@@ -1,8 +1,6 @@
 package com.catalinaa.canciones.modelos;
 
-import java.util.Date;
-
-import org.springframework.format.annotation.DateTimeFormat;
+import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,6 +10,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Size;
+
 
 @Entity
 @Table(name = "canciones")
@@ -20,40 +20,42 @@ public class Cancion {
     @GeneratedValue(strategy = GenerationType.IDENTITY) //autoincremental
     private Long id;
 
+    @Size(min = 5, message = "Por favor proporciona el titulo de la cancion")
     @Column(nullable = false)
     private String titulo;
     
+    @Size(min = 3, message = "Por favor proporciona el nombre de la cancion")
     @Column(nullable = false)
     private String artista;
 
+    @Size(min = 3, message = "Por favor proporciona el album de la cancion")
     private String album;
 
+    @Size(min = 3, message = "Por favor proporciona el genero de la cancion")
     private String genero;
 
+    @Size(min = 3, message = "Por favor proporciona el idioma de la cancion")
     private String idioma;
 
     @Column(name = "fecha_creacion")
-    @DateTimeFormat(pattern="yyyy-MM-dd")
-    private Date fechaCreacion;
+    private LocalDate fechaCreacion;
 
     @Column(name = "fecha_actualizacion")
-    @DateTimeFormat(pattern="yyyy-MM-dd")
-    private Date fechaActualizacion;
+    private LocalDate fechaActualizacion;
 
     // Constructor vacio
     public Cancion() {}
 
-
     // Creando fechas antes de agregar a bd
     @PrePersist
     protected void onCreate() {
-        this.fechaCreacion = new Date();
-        this.fechaActualizacion = this.fechaCreacion;
+    this.fechaCreacion = LocalDate.now();
+    this.fechaActualizacion = LocalDate.now();
     }
 
     @PreUpdate
     protected void onUpdate() {
-        this.fechaActualizacion = new Date();
+    this.fechaActualizacion = LocalDate.now();
     }
 
     // Getters y setters
@@ -105,12 +107,14 @@ public class Cancion {
         this.idioma = idioma;
     }
 
-    public Date getFechaCreacion() {
+    public LocalDate getFechaCreacion() {
         return fechaCreacion;
     }
-
-    public Date getFechaActualizacion() {
+    public LocalDate getFechaActualizacion() {
         return fechaActualizacion;
     }
-    
+
+    public void setFechaActualizacion(LocalDate fechaActualizacion) {
+        this.fechaActualizacion = fechaActualizacion;
+    }
 }
