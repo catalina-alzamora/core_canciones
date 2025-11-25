@@ -26,7 +26,7 @@
                     <td>${cancion.titulo}</td>
                     <td>${cancion.artista}</td>
                     <td>
-                        <a class="detalle" href="/canciones/detalle/${cancion.id}">Detalle</a>
+                        <a class="btn2" href="/canciones/detalle/${cancion.id}">Detalle</a>
                     </td>
                 </tr>
             </c:forEach>

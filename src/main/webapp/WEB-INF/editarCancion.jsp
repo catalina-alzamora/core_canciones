@@ -41,7 +41,7 @@
         <input class="btn1" type="submit" value="Guardar"/>
 
     </form:form> 
-        <a class="volver" href="/canciones">Volver</a>
+        <a class="link" href="/canciones">Volver</a>
 
 </body>
 </html>
