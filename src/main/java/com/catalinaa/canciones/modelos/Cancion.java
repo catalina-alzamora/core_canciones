@@ -7,9 +7,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 
@@ -23,10 +26,12 @@ public class Cancion {
     @Size(min = 5, message = "Por favor proporciona el titulo de la cancion")
     @Column(nullable = false)
     private String titulo;
-    
-    @Size(min = 3, message = "Por favor proporciona el nombre de la cancion")
-    @Column(nullable = false)
-    private String artista;
+
+    // Columna con FK
+    @ManyToOne
+    @JoinColumn(name = "artista_id")
+    @NotNull(message="Debes seleccionar un artista")
+    private Artista artista;
 
     @Size(min = 3, message = "Por favor proporciona el album de la cancion")
     private String album;
@@ -37,7 +42,7 @@ public class Cancion {
     @Size(min = 3, message = "Por favor proporciona el idioma de la cancion")
     private String idioma;
 
-    @Column(name = "fecha_creacion")
+    @Column(name = "fecha_creacion", updatable = false)
     private LocalDate fechaCreacion;
 
     @Column(name = "fecha_actualizacion")
@@ -75,11 +80,11 @@ public class Cancion {
         this.titulo = titulo;
     }
 
-    public String getArtista() {
+    public Artista getArtista() {
         return artista;
     }
 
-    public void setArtista(String artista) {
+    public void setArtista(Artista artista) {
         this.artista = artista;
     }
 

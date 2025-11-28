@@ -24,11 +24,16 @@ form div {
     flex-direction: column;
 }
 
-input[type="text"] {
+input[type="text"], select {
     width: 200px;
     border: 2px solid #9D4EDD; 
     border-radius: 10px;  
     padding: 8px; 
+}
+
+select {
+    width: 220px;
+    background-color: #F5F6FA;
 }
 
 thead th {
@@ -87,3 +92,22 @@ tbody td {
     margin-bottom: 20px;
     color: #9D4EDD;
 }
+
+ul {
+    list-style-type: none;
+    font-size: 25px;
+    margin-left: -50px;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+ul a { 
+    text-decoration: none; 
+}
+
+.biografia {
+    max-width: 200px;
+}
+
